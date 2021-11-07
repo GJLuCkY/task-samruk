@@ -1,0 +1,48 @@
+version: "3.2"
+
+services:
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    working_dir: /application
+    volumes:
+        - ./src:/application
+        - ./docker/nginx:/etc/nginx/conf.d
+    ports:
+      - "8080:80"
+    links:
+      - "postgres"
+    networks:
+      - samruk
+    depends_on:
+      - postgres
+
+  php-fpm:
+    build: docker/php-fpm
+    container_name: php-fpm
+    working_dir: /application
+    volumes:
+      - ./src:/application
+      - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+    links:
+      - "postgres"
+    networks:
+      - samruk
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    #volumes:
+    #  - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
+    networks:
+      - samruk
+
+networks:
+  samruk:
+    driver: bridge
