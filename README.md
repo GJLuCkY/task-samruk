@@ -1,12 +1,36 @@
-1) создать проект с использованием laravel (+ среда разработки с использованием
-докера);
-2) создать рест апи CRUD для сущности "Новость". Ключевые требования:
-• сущность содержит: название, описание, текст, изображение, дата
-публикации, признак публикации(bool), created_at, updated_at;
-• при реализации использовать инструменты и сущности фреймворков (в т.ч.
-миграции);
-3) покрыть функционал тестами (пары тестов будет достаточно);
-4) разместить в любом гит репозитории и предоставить доступ.
-*В первую очередь будет оцениваться качество кода.
-Среда разработки проекта должна автоматически запускаться командой dockercompose up.
-Удачи!
+## Usage
+
+```bash
+$ git clone git@github.com:GJLuCkY/task-samruk.git
+$ cd task-samruk
+$ docker-compose build
+$ docker-compose up -d
+$ docker-compose exec php sh
+$ php artisan db:seed
+```
+
+http://localhost:8000
+
+
+## Container structures
+
+```bash
+├── nginx
+├── php
+└── postgres
+```
+
+### php container
+
+- Base image
+  - [php](https://hub.docker.com/_/php):7.4-fpm-alpine
+
+### nginx container
+
+- Base image
+  - [nginx](https://hub.docker.com/_/nginx):stable-alpine
+
+### postgres container
+
+- Base image
+  - [postgres/psql-server](https://hub.docker.com/_/postgres):14-alpine
