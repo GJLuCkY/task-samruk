@@ -9,3 +9,4 @@ init:
 	docker-compose exec php chmod -R 777 storage bootstrap/cache
 	docker-compose exec php php artisan migrate
 	docker-compose exec php php artisan db:seed
+	docker-compose exec php ./vendor/bin/phpunit
