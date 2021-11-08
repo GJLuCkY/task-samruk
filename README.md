@@ -6,6 +6,8 @@ $ cd task-samruk
 $ docker-compose build
 $ docker-compose up -d
 $ docker-compose exec php sh
+$ cp .env.example .env
+$ composer install
 $ php artisan db:seed
 ```
 
