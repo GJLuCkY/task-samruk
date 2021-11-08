@@ -7,9 +7,13 @@ $ make init
 ```
 
 GET     - http://localhost:8000/api/posts (index)
+
 GET     - http://localhost:8000/api/posts/{postId} (show)
+
 POST    - http://localhost:8000/api/posts (create)
+
 PUT     - http://localhost:8000/api/posts/{postId} (update)
+
 DELETE  - http://localhost:8000/api/posts/{postId} (delete)
 
 
