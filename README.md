@@ -3,15 +3,14 @@
 ```bash
 $ git clone git@github.com:GJLuCkY/task-samruk.git
 $ cd task-samruk
-$ docker-compose build
-$ docker-compose up -d
-$ docker-compose exec php sh
-$ cp .env.example .env
-$ composer install
-$ php artisan db:seed
+$ make init
 ```
 
-http://localhost:8000
+GET     - http://localhost:8000/api/posts (index)
+GET     - http://localhost:8000/api/posts/{postId} (show)
+POST    - http://localhost:8000/api/posts (create)
+PUT     - http://localhost:8000/api/posts/{postId} (update)
+DELETE  - http://localhost:8000/api/posts/{postId} (delete)
 
 
 ## Container structures
